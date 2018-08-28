@@ -153,7 +153,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.8705883, g: 0.86666673, b: 0.86666673, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -348,7 +348,7 @@ Prefab:
     - target: {fileID: 224769844996976238, guid: 3a2af7010d61c4ebd8c27745561ff100,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224769844996976238, guid: 3a2af7010d61c4ebd8c27745561ff100,
         type: 2}
@@ -477,6 +477,39 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 695725678}
+--- !u!1 &841230654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 841230655}
+  m_Layer: 5
+  m_Name: NodeGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &841230655
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841230654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1754032747}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -2874, y: -1162}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &907915961
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +728,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3600, y: 2400}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -733,6 +766,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1299291806}
+  - {fileID: 841230655}
   - {fileID: 2048491469}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -784,6 +818,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text_TestedScore: {fileID: 1915420727}
   Text_ExpectedScore: {fileID: 695725680}
+  GameObject_NodeGroup: {fileID: 841230654}
+  GameObject_Node: {fileID: 1749379011736164, guid: 3a2af7010d61c4ebd8c27745561ff100,
+    type: 2}
 --- !u!1 &1915420725
 GameObject:
   m_ObjectHideFlags: 0
