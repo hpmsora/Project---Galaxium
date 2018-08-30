@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+static class Constants {
+	public const string Mode_Game = "Mode_Game";
+	public const string Mode_Sandbox = "Mode_SandBox";
+}
+
 public class GameController : MonoBehaviour {
 
 	static GameController instance;
@@ -16,6 +21,7 @@ public class GameController : MonoBehaviour {
 	public GameObject GameObject_Node;
 
 	// Main Game Information
+	private string GameMode = Constants.Mode_Game;
 	private ProfileInfo Profile;
 	private Transform Transform_NodeGroup;
 	private List<GameObject> List_GameObject_Node;
@@ -63,5 +69,9 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		Text_TestedScore.text = Profile.TestedScore.ToString ();
 		Text_ExpectedScore.text = Profile.ExpectedScore.ToString ();
+	}
+
+	void ChangeModeButton() {
+		
 	}
 }
