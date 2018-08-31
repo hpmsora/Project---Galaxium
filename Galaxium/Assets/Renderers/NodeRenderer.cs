@@ -32,4 +32,9 @@ public class NodeRenderer : MonoBehaviour {
 		NodeCost = _NodeCost;
 		RelativeLocation = _RelativeLocation;
 	}
+
+	// Update Location Only
+	public void UpdateLocation(Vector3 _RelativeLocation) {
+		RelativeLocation = _RelativeLocation;
+	}
 }

@@ -20,13 +20,14 @@ public class GameController : MonoBehaviour {
 
 	// Prefab Objects
 	public GameObject GameObject_Node;
-	public GameObject GameObject_NodeUtility;
+	public GameObject GameObject_NodeUtilityGroup;
 
 	// Main Game Information
 	private string GameMode = Constants.Mode_Game;
 	private ProfileInfo Profile;
 	private Transform Transform_NodeGroup;
 	private List<GameObject> List_GameObject_Node;
+	private NodeController NewNodeController;
 
 	// Temporary Fixed Game Information
 	private GameObject NewNode;
@@ -51,12 +52,20 @@ public class GameController : MonoBehaviour {
 
 	// Initializing State
 	void InitializeState() {
+		NewNodeController = gameObject.GetComponent<NodeController> ();
+
 	}
 
 	// Test Initialization
 	void TestInit() {
 		CreateNewNode("Test", 12.3, new Vector3(0, 200, 100));
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
+	}
+
+	// Updating by frame
+	void Update () {
+		Text_TestedScore.text = Profile.TestedScore.ToString ();
+		Text_ExpectedScore.text = Profile.ExpectedScore.ToString ();
 	}
 
 	// Create New Node
@@ -68,12 +77,6 @@ public class GameController : MonoBehaviour {
 		return NewNode;
 	}
 
-	// Updating by frame
-	void Update () {
-		Text_TestedScore.text = Profile.TestedScore.ToString ();
-		Text_ExpectedScore.text = Profile.ExpectedScore.ToString ();
-	}
-
 	// Changing game mode
 	void ChangeModeButton() {
 		Debug.Log ("Mode Changing");
@@ -82,48 +85,17 @@ public class GameController : MonoBehaviour {
 		if (GameMode == Constants.Mode_Game) {
 			GameMode = Constants.Mode_Sandbox;
 			Debug.Log ("Showing All Node Utilities");
-			ShowingNodeUtility ();
+			NewNodeController.ShowingNodeUtility (GameObject_NodeUtilityGroup, GameObject_NodeGroup);
 		} else if (GameMode == Constants.Mode_Sandbox) {
 			GameMode = Constants.Mode_Game;
 			Debug.Log ("Destroying All Node Utilities");
-			DestoryNodeUtility ();
+			NewNodeController.DestoryNodeUtility (GameObject_NodeGroup);
 		} else {
 			Debug.Log ("Invalid Game Mode, Initializing Game Mode Now");
 			GameMode = Constants.Mode_Game;
-			DestoryNodeUtility ();
+			NewNodeController.DestoryNodeUtility (GameObject_NodeGroup);
 		}
 
 		Debug.Log ("Current Mode: " + GameMode);
-	}
-
-	// Create uility tools for each node
-	void ShowingNodeUtility() {
-		Vector3 NodeUtilityLocation = new Vector3 (0, 0, 0);
-		GameObject[] AllNodes = GetAllNodeGameObjects ();
-
-		foreach (GameObject EachAllNode in AllNodes) {
-			NewNodeUtility = Instantiate (GameObject_NodeUtility, new Vector3 (0, 0, 0), Quaternion.identity, EachAllNode.transform) as GameObject;
-			NewNodeUtility.GetComponent<NodeUtilityRenderer> ().UpdateInformation (NodeUtilityLocation);
-			NewNodeUtility.name = EachAllNode.name + "Utility";
-		}
-	}
-
-	// Destroy uility tools on all nodes
-	void DestoryNodeUtility() {
-		GameObject[] AllNodeUtilities = GetAllNodeUtilityGameObjects ();
-
-		foreach (GameObject EachAllNodeUtilities in AllNodeUtilities) {
-			Destroy (EachAllNodeUtilities);
-		}
-	}
-
-	// Getting all node gameobjects
-	GameObject[] GetAllNodeGameObjects() {
-		return GameObject.FindGameObjectsWithTag ("Node");
-	}
-
-	// Getting all node utility gameobjects
-	GameObject[] GetAllNodeUtilityGameObjects() {
-		return GameObject.FindGameObjectsWithTag ("NodeUtility");
 	}
 }

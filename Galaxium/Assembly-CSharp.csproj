@@ -54,6 +54,7 @@
      <Compile Include="Assets\DataInfo\NodeInfo.cs" />
      <Compile Include="Assets\DataInfo\ProfileInfo.cs" />
      <Compile Include="Assets\MasterScript\GameController.cs" />
+     <Compile Include="Assets\MasterScript\NodeController.cs" />
      <Compile Include="Assets\Renderers\NodeRenderer.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityRenderer.cs" />
  <Reference Include="UnityEngine.UI">
