@@ -326,32 +326,32 @@ Prefab:
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224391098218848654, guid: 3511bdab17d724c50a7a2f27c6852fbb,
         type: 2}
@@ -960,6 +960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1758631544}
   - component: {fileID: 1758631545}
+  - component: {fileID: 1758631546}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -997,8 +998,19 @@ MonoBehaviour:
   GameObject_NodeGroup: {fileID: 841230654}
   GameObject_Node: {fileID: 1749379011736164, guid: 3a2af7010d61c4ebd8c27745561ff100,
     type: 2}
-  GameObject_NodeUtility: {fileID: 1507398596573744, guid: 3511bdab17d724c50a7a2f27c6852fbb,
+  GameObject_NodeUtilityGroup: {fileID: 1507398596573744, guid: 3511bdab17d724c50a7a2f27c6852fbb,
     type: 2}
+--- !u!114 &1758631546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1758631543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7766ad16efd04439f817dcb84781ce1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1820136959
 GameObject:
   m_ObjectHideFlags: 0
