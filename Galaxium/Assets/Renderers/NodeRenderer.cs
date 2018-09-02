@@ -23,18 +23,18 @@ public class NodeRenderer : MonoBehaviour {
 	void Update () {
 		Text_Name.text = NodeName;
 		Text_Cost.text = NodeCost.ToString ();
-		transform.localPosition = RelativeLocation;
 	}
 
 	// Update Information
 	public void UpdateInformation(string _NodeName, double _NodeCost, Vector3 _RelativeLocation) {
 		NodeName = _NodeName;
 		NodeCost = _NodeCost;
-		RelativeLocation = _RelativeLocation;
+		UpdateLocation (_RelativeLocation);
 	}
 
 	// Update Location Only
 	public void UpdateLocation(Vector3 _RelativeLocation) {
 		RelativeLocation = _RelativeLocation;
+		transform.localPosition = RelativeLocation;
 	}
 }

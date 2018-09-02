@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class NodeUtilityRenderer : MonoBehaviour {
 
@@ -20,16 +21,16 @@ public class NodeUtilityRenderer : MonoBehaviour {
 	
 	// Update Node
 	void Update () {
+	}
+		
+
+	// Update Position Information
+	public void UpdateInformation(Vector3 _RelativeLocation) {
+		RelativeLocation = _RelativeLocation;
 		transform.localPosition = RelativeLocation;
 	}
 
-	// Update Information
-	public void UpdateInformation(Vector3 _RelativeLocation) {
-		RelativeLocation = _RelativeLocation;
-	}
-
-	// Button_Move_Function
+	// Button Move Function
 	void Button_Move_Function() {
-		//Vector2 MousePosition = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 	}
 }

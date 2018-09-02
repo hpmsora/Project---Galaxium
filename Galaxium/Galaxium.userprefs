@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MasterScript/GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Renderers/NodeUtilityRenderer.cs">
     <Files>
-      <File FileName="Assets/MasterScript/GameController.cs" Line="116" Column="33" />
+      <File FileName="Assets/MasterScript/NodeController.cs" Line="22" Column="1" />
+      <File FileName="Assets/MasterScript/GameController.cs" Line="99" Column="1" />
       <File FileName="Assets/DataInfo/NodeInfo.cs" Line="1" Column="1" />
       <File FileName="Assets/DataInfo/ProfileInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Renderers/NodeRenderer.cs" Line="12" Column="26" />
-      <File FileName="Assets/Renderers/NodeUtilityRenderer.cs" Line="26" Column="32" />
+      <File FileName="Assets/Renderers/NodeRenderer.cs" Line="37" Column="28" />
+      <File FileName="Assets/Renderers/NodeUtilityRenderer.cs" Line="38" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
