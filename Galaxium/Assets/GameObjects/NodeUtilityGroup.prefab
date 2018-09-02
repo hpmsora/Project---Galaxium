@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224391098218848654}
-  - component: {fileID: 114931448174735878}
+  - component: {fileID: 114048003504832118}
   m_Layer: 0
   m_Name: NodeUtilityGroup
   m_TagString: NodeUtility
@@ -99,6 +99,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114048003504832118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507398596573744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5eb30a5163ce4ef0bfbd3dbf797c04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainGameController: {fileID: 0}
+  Button_Move: {fileID: 114323363802865342}
+  Button_Create: {fileID: 114048107194603182}
 --- !u!114 &114048107194603182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObject_NodeUtilityGroup: {fileID: 1507398596573744}
+  GameObject_NodeSpace: {fileID: 0}
 --- !u!114 &114774777511193344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,20 +340,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Create
---- !u!114 &114931448174735878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1507398596573744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5eb30a5163ce4ef0bfbd3dbf797c04f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainGameController: {fileID: 0}
-  Button_Move: {fileID: 114323363802865342}
-  Button_Create: {fileID: 114048107194603182}
 --- !u!222 &222106503596128894
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -388,7 +389,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1507398596573744}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

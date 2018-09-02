@@ -8,6 +8,7 @@ public class NodeUtilityGroup_Button_Move : MonoBehaviour, IBeginDragHandler, ID
 
 	// Main Objects
 	public GameObject GameObject_NodeUtilityGroup;
+	public GameObject GameObject_NodeSpace;
 
 	// NodeUtilityGroup_Button_Move Information
 	private Vector3 Original_Position;
@@ -16,6 +17,8 @@ public class NodeUtilityGroup_Button_Move : MonoBehaviour, IBeginDragHandler, ID
 		Debug.Log ("Dragging Begin");
 		Original_Position = GameObject_NodeUtilityGroup.transform.position;
 		GameObject_NodeUtilityGroup.transform.position = Input.mousePosition;
+
+		GeneratePossiblePositions ();
 	}
 
 	public void OnDrag(PointerEventData _EventData) {
@@ -27,5 +30,12 @@ public class NodeUtilityGroup_Button_Move : MonoBehaviour, IBeginDragHandler, ID
 	public void OnEndDrag(PointerEventData _EventData) {
 		Debug.Log ("Dragging Eng");
 		GameObject_NodeUtilityGroup.transform.position = Original_Position;
+	}
+
+	//Generate New Possible Positions
+	void GeneratePossiblePositions() {
+		int ExpensionLevel = 4;
+
+
 	}
 }

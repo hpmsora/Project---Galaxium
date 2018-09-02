@@ -21,10 +21,10 @@ public class NodeController : MonoBehaviour {
 		foreach (GameObject EachAllNode in AllNodes) {
 			Debug.Log (EachAllNode.transform.localPosition);
 			NewNodeUtility = Instantiate (_GameObject_NodeUtility, DefaultNodeUtilityLocation, Quaternion.identity, _NodeGroup.transform) as GameObject;
-			NewNodeUtility.GetComponent<NodeUtilityRenderer> ().UpdateInformation (EachAllNode.transform.localPosition);
+			NewNodeUtility.GetComponent<NodeUtilityGroupRenderer> ().UpdateInformation (EachAllNode.transform.localPosition);
 			NewNodeUtility.name = EachAllNode.name + "UtilityGroup";
 			EachAllNode.transform.parent = NewNodeUtility.transform;
-			EachAllNode.GetComponent<NodeRenderer> ().UpdateLocation (new Vector3 (0, 0, 0));
+			EachAllNode.GetComponent<NodeRenderer> ().NodeCentralize ();
 		}
 	}
 
@@ -32,12 +32,12 @@ public class NodeController : MonoBehaviour {
 	public void DestoryNodeUtility(GameObject _NodeGroup) {
 		GameObject[] AllNodeUtilities = GetAllNodeUtilityGameObjects ();
 		GameObject[] AllNodes = GetAllNodeGameObjects ();
-		Vector3 NewNodePosition = new Vector3 (0, 0, 0);
+		Vector2 NewNodePositionIndex = new Vector2 (0, 0);
 
 		foreach (GameObject EachAllNode in AllNodes) {
-			NewNodePosition = EachAllNode.transform.parent.localPosition;
+			NewNodePositionIndex = EachAllNode.GetComponent<NodeRenderer> ().GetPositionIndex ();
 			EachAllNode.transform.parent = _NodeGroup.transform;
-			EachAllNode.GetComponent<NodeRenderer> ().UpdateLocation (NewNodePosition);
+			EachAllNode.GetComponent<NodeRenderer> ().UpdateLocation (NewNodePositionIndex);
 		}
 
 		foreach (GameObject EachAllNodeUtilities in AllNodeUtilities) {

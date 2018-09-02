@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-static class Constants {
-	public const string Mode_Game = "Mode_Game";
-	public const string Mode_Sandbox = "Mode_SandBox";
-}
-
 public class GameController : MonoBehaviour {
 
 	static GameController instance;
@@ -23,7 +18,7 @@ public class GameController : MonoBehaviour {
 	public GameObject GameObject_NodeUtilityGroup;
 
 	// Main Game Information
-	private string GameMode = Constants.Mode_Game;
+	private string GameMode = GameConstants.Mode_Game;
 	private ProfileInfo Profile;
 	private Transform Transform_NodeGroup;
 	private List<GameObject> List_GameObject_Node;
@@ -71,7 +66,7 @@ public class GameController : MonoBehaviour {
 	// Create New Node
 	GameObject CreateNewNode(string _NodeName, double _Cost, Vector3 _RelativeLocation) {
 		NewNode = Instantiate (GameObject_Node, new Vector3 (0, 0, 0), Quaternion.identity, GameObject_NodeGroup.transform) as GameObject;
-		NewNode.GetComponent<NodeRenderer> ().UpdateInformation (_NodeName, _Cost, _RelativeLocation);
+		NewNode.GetComponent<NodeRenderer> ().UpdateInformation (_NodeName, _Cost, new Vector2(2, 2));
 		NewNode.name = _NodeName;
 
 		return NewNode;
@@ -82,17 +77,17 @@ public class GameController : MonoBehaviour {
 		Debug.Log ("Mode Changing");
 		Debug.Log ("Previous Mode: " + GameMode);
 
-		if (GameMode == Constants.Mode_Game) {
-			GameMode = Constants.Mode_Sandbox;
+		if (GameMode == GameConstants.Mode_Game) {
+			GameMode = GameConstants.Mode_Sandbox;
 			Debug.Log ("Showing All Node Utilities");
 			NewNodeController.ShowingNodeUtility (GameObject_NodeUtilityGroup, GameObject_NodeGroup);
-		} else if (GameMode == Constants.Mode_Sandbox) {
-			GameMode = Constants.Mode_Game;
+		} else if (GameMode == GameConstants.Mode_Sandbox) {
+			GameMode = GameConstants.Mode_Game;
 			Debug.Log ("Destroying All Node Utilities");
 			NewNodeController.DestoryNodeUtility (GameObject_NodeGroup);
 		} else {
 			Debug.Log ("Invalid Game Mode, Initializing Game Mode Now");
-			GameMode = Constants.Mode_Game;
+			GameMode = GameConstants.Mode_Game;
 			NewNodeController.DestoryNodeUtility (GameObject_NodeGroup);
 		}
 

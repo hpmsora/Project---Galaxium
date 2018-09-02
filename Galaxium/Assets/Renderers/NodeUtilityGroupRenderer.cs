@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class NodeUtilityRenderer : MonoBehaviour {
+public class NodeUtilityGroupRenderer : MonoBehaviour {
 
 	// Main Objects
 	public GameObject MainGameController;
