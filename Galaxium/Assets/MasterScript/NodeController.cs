@@ -5,31 +5,26 @@ using UnityEngine.UI;
 
 public class NodeController : MonoBehaviour {
 
-	// Mainscene Objects
-	//public GameObject MainGameController;
-
 	// Temporary Fixed Game Information
-	private GameObject NewNodeUtility;
+	private GameObject NewNodeUtilityGroup;
 	private GameObject NewNode;
 
 	// Create uility tools for each node
-	public void ShowingNodeUtility(GameObject _GameObject_NodeUtility, GameObject _NodeGroup) {
-		Debug.Log (_GameObject_NodeUtility.name);
+	public void ShowingNodeUtilityGroup(GameObject _GameObject_NodeUtilityGroup, GameObject _NodeGroup) {
 		Vector3 DefaultNodeUtilityLocation = new Vector3 (0, 0, 0);
 		GameObject[] AllNodes = GetAllNodeGameObjects ();
 
 		foreach (GameObject EachAllNode in AllNodes) {
-			Debug.Log (EachAllNode.transform.localPosition);
-			NewNodeUtility = Instantiate (_GameObject_NodeUtility, DefaultNodeUtilityLocation, Quaternion.identity, _NodeGroup.transform) as GameObject;
-			NewNodeUtility.GetComponent<NodeUtilityGroupRenderer> ().UpdateInformation (EachAllNode.transform.localPosition);
-			NewNodeUtility.name = EachAllNode.name + "UtilityGroup";
-			EachAllNode.transform.parent = NewNodeUtility.transform;
+			NewNodeUtilityGroup = Instantiate (_GameObject_NodeUtilityGroup, DefaultNodeUtilityLocation, Quaternion.identity, _NodeGroup.transform) as GameObject;
+			NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().UpdateInformation (EachAllNode.transform.localPosition, EachAllNode);
+			NewNodeUtilityGroup.name = EachAllNode.name + "UtilityGroup";
+			EachAllNode.transform.parent = NewNodeUtilityGroup.transform;
 			EachAllNode.GetComponent<NodeRenderer> ().NodeCentralize ();
 		}
 	}
 
 	// Destroy uility tools on all nodes
-	public void DestoryNodeUtility(GameObject _NodeGroup) {
+	public void DestoryNodeUtilityGroup(GameObject _NodeGroup) {
 		GameObject[] AllNodeUtilities = GetAllNodeUtilityGameObjects ();
 		GameObject[] AllNodes = GetAllNodeGameObjects ();
 		Vector2 NewNodePositionIndex = new Vector2 (0, 0);

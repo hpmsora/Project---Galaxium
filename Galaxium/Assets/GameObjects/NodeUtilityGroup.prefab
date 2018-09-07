@@ -110,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5eb30a5163ce4ef0bfbd3dbf797c04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainGameController: {fileID: 0}
   Button_Move: {fileID: 114323363802865342}
   Button_Create: {fileID: 114048107194603182}
+  GameObject_NodeSpace: {fileID: 1103883555949992, guid: 266718dd718694a458a7852a8bc6e74c,
+    type: 2}
 --- !u!114 &114048107194603182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObject_NodeUtilityGroup: {fileID: 1507398596573744}
-  GameObject_NodeSpace: {fileID: 0}
 --- !u!114 &114774777511193344
 MonoBehaviour:
   m_ObjectHideFlags: 1

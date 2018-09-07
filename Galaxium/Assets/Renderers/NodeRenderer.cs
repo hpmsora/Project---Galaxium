@@ -35,7 +35,6 @@ public class NodeRenderer : MonoBehaviour {
 	// Update Location Only
 	public void UpdateLocation(Vector2 _PositionIndex) {
 		NodeInformation.Position = _PositionIndex;
-		Debug.Log(NewNodeUtility.NodePosition_IndexToLocal (_PositionIndex));
 		transform.localPosition = NewNodeUtility.NodePosition_IndexToLocal (_PositionIndex);
 	}
 

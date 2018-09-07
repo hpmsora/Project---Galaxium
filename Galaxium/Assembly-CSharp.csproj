@@ -57,6 +57,7 @@
      <Compile Include="Assets\MasterScript\GameController.cs" />
      <Compile Include="Assets\MasterScript\NodeController.cs" />
      <Compile Include="Assets\Renderers\NodeRenderer.cs" />
+     <Compile Include="Assets\Renderers\NodeSpaceRenderer.cs" />
      <Compile Include="Assets\Renderers\NodeUtility.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Create.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Move.cs" />

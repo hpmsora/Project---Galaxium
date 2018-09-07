@@ -53,7 +53,10 @@ public class GameController : MonoBehaviour {
 
 	// Test Initialization
 	void TestInit() {
-		CreateNewNode("Test", 12.3, new Vector3(0, 200, 100));
+		CreateNewNode("Test", 12.3, new Vector2(1, 1));
+		CreateNewNode("Test", 12.3, new Vector2(1, 2));
+		CreateNewNode("Test", 12.3, new Vector2(1, 3));
+		CreateNewNode("Test", 12.3, new Vector2(2, 1));
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
 	}
 
@@ -66,7 +69,7 @@ public class GameController : MonoBehaviour {
 	// Create New Node
 	GameObject CreateNewNode(string _NodeName, double _Cost, Vector3 _RelativeLocation) {
 		NewNode = Instantiate (GameObject_Node, new Vector3 (0, 0, 0), Quaternion.identity, GameObject_NodeGroup.transform) as GameObject;
-		NewNode.GetComponent<NodeRenderer> ().UpdateInformation (_NodeName, _Cost, new Vector2(2, 2));
+		NewNode.GetComponent<NodeRenderer> ().UpdateInformation (_NodeName, _Cost, _RelativeLocation);
 		NewNode.name = _NodeName;
 
 		return NewNode;
@@ -80,15 +83,15 @@ public class GameController : MonoBehaviour {
 		if (GameMode == GameConstants.Mode_Game) {
 			GameMode = GameConstants.Mode_Sandbox;
 			Debug.Log ("Showing All Node Utilities");
-			NewNodeController.ShowingNodeUtility (GameObject_NodeUtilityGroup, GameObject_NodeGroup);
+			NewNodeController.ShowingNodeUtilityGroup (GameObject_NodeUtilityGroup, GameObject_NodeGroup);
 		} else if (GameMode == GameConstants.Mode_Sandbox) {
 			GameMode = GameConstants.Mode_Game;
 			Debug.Log ("Destroying All Node Utilities");
-			NewNodeController.DestoryNodeUtility (GameObject_NodeGroup);
+			NewNodeController.DestoryNodeUtilityGroup (GameObject_NodeGroup);
 		} else {
 			Debug.Log ("Invalid Game Mode, Initializing Game Mode Now");
 			GameMode = GameConstants.Mode_Game;
-			NewNodeController.DestoryNodeUtility (GameObject_NodeGroup);
+			NewNodeController.DestoryNodeUtilityGroup (GameObject_NodeGroup);
 		}
 
 		Debug.Log ("Current Mode: " + GameMode);
