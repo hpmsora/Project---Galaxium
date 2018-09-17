@@ -13,9 +13,13 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 
 	// Rendering Information
 	private bool isDraggable = true;
-	private Vector3 RelativeLocation = new Vector3(0, 0, 0);
+	private bool isNewPosition = false;
+	private Vector3 RelativePosition = new Vector3(0, 0, 0);
 	private GameObject NewNode;
 	private GameObject NewNodeSpace;
+
+	// Node Utility Tools
+	private NodeUtility NewNodeUtility = new NodeUtility ();
 
 	// Initialize Node
 	void Start () {
@@ -35,15 +39,31 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 		isDraggable = _isDraggable;
 	}
 
+	// Get New Position Variable Value
+	public bool GetIsNewPosition() {
+		return isNewPosition;
+	}
+
+	// Set New Position Variable Value
+	public void SetIsNewPosition(bool _isNewPosition) {
+		isNewPosition = _isNewPosition;
+	}
+
 	// Set Parent GameObject
 	public void SetParent(Transform _Parent) {
 		transform.SetParent (_Parent);
 	}
 
+	// Update Relative Position by Index Vector
+	public void UpdatePositionByIndex(Vector2 _Index) {
+		RelativePosition = NewNodeUtility.NodePosition_IndexToLocal (_Index);
+		transform.localPosition = RelativePosition;
+	}
+
 	// Update Position Information
-	public void UpdateInformation(Vector3 _RelativeLocation, GameObject _NewNode) {
-		RelativeLocation = _RelativeLocation;
-		transform.localPosition = RelativeLocation;
+	public void UpdateInformation(Vector3 _RelativePosition, GameObject _NewNode) {
+		RelativePosition = _RelativePosition;
+		transform.localPosition = RelativePosition;
 		NewNode = _NewNode;
 	}
 

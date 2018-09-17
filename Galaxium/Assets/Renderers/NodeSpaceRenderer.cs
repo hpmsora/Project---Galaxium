@@ -21,9 +21,9 @@ public class NodeSpaceRenderer : MonoBehaviour, IPointerEnterHandler, IPointerEx
 		if (NewNodeUtilityGroupRenderer != null) {
 			NewNodeUtilityGroupRenderer.SetParent (transform);
 			NewNodeUtilityGroupRenderer.SetIsDraggable (false);
-			Debug.Log ("IN");
+			NewNodeUtilityGroupRenderer.SetIsNewPosition (true);
+			Debug.Log ("IN!");
 		}
-		Debug.Log (_PointerEventData.pointerDrag);
 	}
 
 	// Pointer Exit
@@ -32,18 +32,25 @@ public class NodeSpaceRenderer : MonoBehaviour, IPointerEnterHandler, IPointerEx
 		if (NewNodeUtilityGroupRenderer != null) {
 			NewNodeUtilityGroupRenderer.SetParent (GameObject.Find("NodeGroup").transform);
 			NewNodeUtilityGroupRenderer.SetIsDraggable (true);
-			Debug.Log ("OUT");
+			NewNodeUtilityGroupRenderer.SetIsNewPosition (false);
+			Debug.Log ("OUT!");
 		}
 	}
 
 	// Drop On
 	public void OnDrop(PointerEventData _PointerEventData) {
-		Debug.Log ("Drop!");
+		NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer>();
+		if (NewNodeUtilityGroupRenderer != null) {
+			NewNodeUtilityGroupRenderer.SetParent (GameObject.Find("NodeGroup").transform);
+			NewNodeUtilityGroupRenderer.SetIsDraggable (false);
+			NewNodeUtilityGroupRenderer.UpdatePositionByIndex (NodeSpacePosition);
+			Debug.Log ("DROP!");
+		}
 	}
 
 	// Set Position
 	public void UpdatePosition(Vector2 _PositionIndex) {
 		NodeSpacePosition = _PositionIndex;
-		transform.localPosition = NewNodeUtility.NodePosition_IndexToLocal (_PositionIndex);
+		transform.localPosition = NewNodeUtility.NodePosition_IndexToLocal_withZ10 (_PositionIndex);
 	}
 }

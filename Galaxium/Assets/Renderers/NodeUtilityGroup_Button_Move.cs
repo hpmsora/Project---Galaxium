@@ -13,15 +13,14 @@ public class NodeUtilityGroup_Button_Move : MonoBehaviour, IBeginDragHandler, ID
 	private Vector3 Original_Position;
 
 	public void OnBeginDrag(PointerEventData _EventData){
-		//Debug.Log ("Dragging Begin");
 		Original_Position = GameObject_NodeUtilityGroup.transform.position;
 		GameObject_NodeUtilityGroup.transform.position = Input.mousePosition;
-
+		GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsDraggable (true);
+		GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsNewPosition (false);
 		GeneratePossiblePositions ();
 	}
 
 	public void OnDrag(PointerEventData _EventData) {
-		//Debug.Log ("Dragging Now");
 		if (GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetIsDraggable ()) {
 			GameObject_NodeUtilityGroup.transform.position = Input.mousePosition;
 		} else {
@@ -30,8 +29,11 @@ public class NodeUtilityGroup_Button_Move : MonoBehaviour, IBeginDragHandler, ID
 	}
 
 	public void OnEndDrag(PointerEventData _EventData) {
-		//Debug.Log ("Dragging Eng");
-		GameObject_NodeUtilityGroup.transform.position = Original_Position;
+		if (!GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetIsNewPosition ()) {
+			GameObject_NodeUtilityGroup.transform.position = Original_Position;
+		}
+		GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsDraggable (false);
+		GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsNewPosition (false);
 
 		DestoryNodeSpace ();
 	}
