@@ -9,6 +9,9 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 	// Main Objects
 	public Button Button_Move;
 	public Button Button_Create;
+	public Button Button_Setting;
+	public Button Button_Destroy;
+
 	public GameObject GameObject_NodeSpace;
 
 	// Rendering Information
@@ -21,10 +24,15 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 	// Node Utility Tools
 	private NodeUtility NewNodeUtility = new NodeUtility ();
 
-	// Initialize Node
-	void Start () {
+	// Initialization
+	void Start() {
+		Button button_Setting = Button_Setting.GetComponent<Button> ();
+		Button button_Destroy = Button_Destroy.GetComponent<Button> ();
+
+		button_Setting.onClick.AddListener (Button_Setting_Function);
+		button_Destroy.onClick.AddListener (Button_Destroy_Function);
 	}
-	
+
 	// Update Node
 	void Update () {
 	}
@@ -54,9 +62,30 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 		transform.SetParent (_Parent);
 	}
 
+	// Set New Node Variable
+	public void SetNewNode(GameObject _NewNode) {
+		NewNode = _NewNode;
+	}
+
+	// Get Create Button Gameobject
+	public Button GetButton_Create() {
+		return Button_Create;
+	}
+
+	// Run Button Setting Function
+	public void Button_Setting_Function() {
+		Button_Setting.GetComponent<NodeUtilityGroup_Button_Setting> ().Button_Setting_Function ();
+	}
+
+	// Run Button Destroy Function
+	public void Button_Destroy_Function() {
+		Button_Setting.GetComponent<NodeUtilityGroup_Button_Destroy> ().Button_Destory_Function ();
+	}
+
 	// Update Relative Position by Index Vector
 	public void UpdatePositionByIndex(Vector2 _Index) {
 		RelativePosition = NewNodeUtility.NodePosition_IndexToLocal (_Index);
+		NewNode.GetComponent<NodeRenderer> ().UpdateLocationWithoutMoving (_Index);
 		transform.localPosition = RelativePosition;
 	}
 

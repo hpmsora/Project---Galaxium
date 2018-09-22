@@ -17,34 +17,70 @@ public class NodeSpaceRenderer : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
 	// Pointer Enter
 	public void OnPointerEnter(PointerEventData _PointerEventData) {
-		NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer>();
-		if (NewNodeUtilityGroupRenderer != null) {
-			NewNodeUtilityGroupRenderer.SetParent (transform);
-			NewNodeUtilityGroupRenderer.SetIsDraggable (false);
-			NewNodeUtilityGroupRenderer.SetIsNewPosition (true);
-			Debug.Log ("IN!");
+		if (_PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> () != null) {
+			NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+			if (NewNodeUtilityGroupRenderer != null) {
+				NewNodeUtilityGroupRenderer.SetParent (transform);
+				NewNodeUtilityGroupRenderer.SetIsDraggable (false);
+				NewNodeUtilityGroupRenderer.SetIsNewPosition (true);
+				Debug.Log ("MOVE IN!");
+			}
+		} else if (_PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Create> () != null) {
+			NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Create> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+			if (NewNodeUtilityGroupRenderer != null) {
+				GameObject NewNodeUtilityGroup = NewNodeUtilityGroupRenderer.GetButton_Create().GetComponent<NodeUtilityGroup_Button_Create>().GetNewNodeUtilityGroup();
+				NewNodeUtilityGroupRenderer = NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+				NewNodeUtilityGroupRenderer.SetParent (transform);
+				NewNodeUtilityGroupRenderer.SetIsDraggable (false);
+				NewNodeUtilityGroupRenderer.SetIsNewPosition (true);
+				Debug.Log ("CREATE IN!");
+			}
 		}
 	}
 
 	// Pointer Exit
 	public void OnPointerExit(PointerEventData _PointerEventData) {
-		NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer>();
-		if (NewNodeUtilityGroupRenderer != null) {
-			NewNodeUtilityGroupRenderer.SetParent (GameObject.Find("NodeGroup").transform);
-			NewNodeUtilityGroupRenderer.SetIsDraggable (true);
-			NewNodeUtilityGroupRenderer.SetIsNewPosition (false);
-			Debug.Log ("OUT!");
+		if (_PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> () != null) {
+			NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+			if (NewNodeUtilityGroupRenderer != null) {
+				NewNodeUtilityGroupRenderer.SetParent (GameObject.Find ("NodeGroup").transform);
+				NewNodeUtilityGroupRenderer.SetIsDraggable (true);
+				NewNodeUtilityGroupRenderer.SetIsNewPosition (false);
+				Debug.Log ("MOVE OUT!");
+			}
+		} else if (_PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Create> () != null) {
+			NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Create> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+			if (NewNodeUtilityGroupRenderer != null) {
+				GameObject NewNodeUtilityGroup = NewNodeUtilityGroupRenderer.GetButton_Create().GetComponent<NodeUtilityGroup_Button_Create>().GetNewNodeUtilityGroup();
+				NewNodeUtilityGroupRenderer = NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+				NewNodeUtilityGroupRenderer.SetParent (GameObject.Find ("NodeGroup").transform);
+				NewNodeUtilityGroupRenderer.SetIsDraggable (true);
+				NewNodeUtilityGroupRenderer.SetIsNewPosition (false);
+				Debug.Log ("CREATE OUT!");
+			}
 		}
 	}
 
 	// Drop On
 	public void OnDrop(PointerEventData _PointerEventData) {
-		NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer>();
-		if (NewNodeUtilityGroupRenderer != null) {
-			NewNodeUtilityGroupRenderer.SetParent (GameObject.Find("NodeGroup").transform);
-			NewNodeUtilityGroupRenderer.SetIsDraggable (false);
-			NewNodeUtilityGroupRenderer.UpdatePositionByIndex (NodeSpacePosition);
-			Debug.Log ("DROP!");
+		if (_PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> () != null) {
+			NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Move> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+			if (NewNodeUtilityGroupRenderer != null) {
+				NewNodeUtilityGroupRenderer.SetParent (GameObject.Find ("NodeGroup").transform);
+				NewNodeUtilityGroupRenderer.SetIsDraggable (false);
+				NewNodeUtilityGroupRenderer.UpdatePositionByIndex (NodeSpacePosition);
+				Debug.Log ("MOVE DROP!");
+			}
+		} else if (_PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Create> () != null) {
+			NodeUtilityGroupRenderer NewNodeUtilityGroupRenderer = _PointerEventData.pointerDrag.GetComponent<NodeUtilityGroup_Button_Create> ().GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+			if (NewNodeUtilityGroupRenderer != null) {
+				GameObject NewNodeUtilityGroup = NewNodeUtilityGroupRenderer.GetButton_Create().GetComponent<NodeUtilityGroup_Button_Create>().GetNewNodeUtilityGroup();
+				NewNodeUtilityGroupRenderer = NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ();
+				NewNodeUtilityGroupRenderer.SetParent (GameObject.Find ("NodeGroup").transform);
+				NewNodeUtilityGroupRenderer.SetIsDraggable (false);
+				NewNodeUtilityGroupRenderer.UpdatePositionByIndex (NodeSpacePosition);
+				Debug.Log ("CREATE DROP!");
+			}
 		}
 	}
 

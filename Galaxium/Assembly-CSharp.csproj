@@ -60,7 +60,9 @@
      <Compile Include="Assets\Renderers\NodeSpaceRenderer.cs" />
      <Compile Include="Assets\Renderers\NodeUtility.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Create.cs" />
+     <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Destroy.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Move.cs" />
+     <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Setting.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroupRenderer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

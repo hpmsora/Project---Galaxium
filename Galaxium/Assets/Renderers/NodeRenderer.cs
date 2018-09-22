@@ -32,6 +32,11 @@ public class NodeRenderer : MonoBehaviour {
 		UpdateLocation (_PositionIndex);
 	}
 
+	// Update Location Only without Moving
+	public void UpdateLocationWithoutMoving(Vector2 _PositionIndex) {
+		NodeInformation.Position = _PositionIndex;
+	}
+
 	// Update Location Only
 	public void UpdateLocation(Vector2 _PositionIndex) {
 		NodeInformation.Position = _PositionIndex;
@@ -46,5 +51,15 @@ public class NodeRenderer : MonoBehaviour {
 	// Update Node local position to 0, 0 temporarly
 	public void NodeCentralize() {
 		transform.localPosition = new Vector3(0, 0, 0);
+	}
+
+	// Reset Node
+	public void ResetNode() {
+		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0));
+	}
+
+	// Destory Node
+	public void DestoryNode() {
+		Destroy (gameObject);
 	}
 }
