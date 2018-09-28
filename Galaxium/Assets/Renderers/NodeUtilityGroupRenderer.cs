@@ -62,6 +62,11 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 		transform.SetParent (_Parent);
 	}
 
+	// Get New Node Variable
+	public GameObject GetNewNode() {
+		return NewNode;
+	}
+
 	// Set New Node Variable
 	public void SetNewNode(GameObject _NewNode) {
 		NewNode = _NewNode;
@@ -74,12 +79,12 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 
 	// Run Button Setting Function
 	public void Button_Setting_Function() {
-		Button_Setting.GetComponent<NodeUtilityGroup_Button_Setting> ().Button_Setting_Function ();
+		Button_Setting.GetComponent<NodeUtilityGroup_Button_Setting> ().Button_Setting_Function (gameObject);
 	}
 
 	// Run Button Destroy Function
 	public void Button_Destroy_Function() {
-		Button_Setting.GetComponent<NodeUtilityGroup_Button_Destroy> ().Button_Destory_Function ();
+		Button_Destroy.GetComponent<NodeUtilityGroup_Button_Destroy> ().Button_Destory_Function ();
 	}
 
 	// Update Relative Position by Index Vector

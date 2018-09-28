@@ -6,10 +6,9 @@ using UnityEngine.EventSystems;
 
 public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
-	// Main Objects
+	// Main GameObjects
 	public GameObject GameObject_NewNode;
 	public GameObject GameObject_NodeUtilityGroup;
-	public GameObject GameObject_NewNodeUtilityGroup;
 
 	// NodeUtilityGroup_Button_Move Information
 	private Vector3 Original_Position;
@@ -19,7 +18,7 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 	public void OnBeginDrag(PointerEventData _EventData){
 		Original_Position = GameObject_NodeUtilityGroup.transform.position;
 
-		NewNodeUtilityGroup = Instantiate (GameObject_NewNodeUtilityGroup, transform.position, Quaternion.identity, GameObject.Find ("NodeGroup").transform) as GameObject;
+		NewNodeUtilityGroup = Instantiate (GameObject_NodeUtilityGroup, transform.position, Quaternion.identity, GameObject.Find ("NodeGroup").transform) as GameObject;
 		NewNodeUtilityGroup.name = "New Node Utility Group";
 		ClearNode ();
 		CreateNewNode ();
@@ -39,7 +38,7 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 
 	public void OnEndDrag(PointerEventData _EventData) {
 		if (!NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetIsNewPosition ()) {
-			NewNodeUtilityGroup.transform.position = Original_Position;
+			Destroy (NewNodeUtilityGroup);
 		}
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsDraggable (false);
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsNewPosition (false);

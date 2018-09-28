@@ -273,6 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c690384658c41469a2a92a3cb14608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameObject_NewNodeSettingWindow: {fileID: 1843444730684832, guid: e14ab48cbc43f42c48d28a42279bb465,
+    type: 2}
 --- !u!114 &114323363802865342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,7 +514,6 @@ MonoBehaviour:
   GameObject_NewNode: {fileID: 1749379011736164, guid: 3a2af7010d61c4ebd8c27745561ff100,
     type: 2}
   GameObject_NodeUtilityGroup: {fileID: 1507398596573744}
-  GameObject_NewNodeUtilityGroup: {fileID: 1507398596573744}
 --- !u!114 &114861437776914494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -411.46014, y: -33.941254}
   m_SizeDelta: {x: 100, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224424674318347698

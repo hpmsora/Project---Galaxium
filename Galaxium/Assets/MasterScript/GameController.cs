@@ -7,17 +7,17 @@ public class GameController : MonoBehaviour {
 
 	static GameController instance;
 
-	// Mainscene Objects
+	// Mainscene GameObjects
 	public Text Text_TestedScore;
 	public Text Text_ExpectedScore;
 	public Button Button_ChangeModeTemp;
 	public GameObject GameObject_NodeGroup;
 
-	// Prefab Objects
+	// Prefab GameObjects
 	public GameObject GameObject_Node;
 	public GameObject GameObject_NodeUtilityGroup;
 
-	// Main Game Information
+	// GameController Information
 	private string GameMode = GameConstants.Mode_Game;
 	private ProfileInfo Profile;
 	private Transform Transform_NodeGroup;

@@ -22,13 +22,13 @@ public class NodeRenderer : MonoBehaviour {
 	// Update Node
 	void Update () {
 		Text_Name.text = NodeInformation.Name;
-		Text_Cost.text = NodeInformation.Cost.ToString ();
+		Text_Cost.text = NodeInformation.LaborCost.ToString ();
 	}
 
 	// Update Information
-	public void UpdateInformation(string _NodeName, double _NodeCost, Vector2 _PositionIndex) {
+	public void UpdateInformation(string _NodeName, double _NodeLaborCost, Vector2 _PositionIndex) {
 		NodeInformation.Name = _NodeName;
-		NodeInformation.Cost = _NodeCost;
+		NodeInformation.LaborCost = _NodeLaborCost;
 		UpdateLocation (_PositionIndex);
 	}
 
@@ -41,6 +41,15 @@ public class NodeRenderer : MonoBehaviour {
 	public void UpdateLocation(Vector2 _PositionIndex) {
 		NodeInformation.Position = _PositionIndex;
 		transform.localPosition = NewNodeUtility.NodePosition_IndexToLocal (_PositionIndex);
+	}
+
+	// Get Node Name
+	public string GetNodeName() {
+		return NodeInformation.Name;
+	}
+
+	public double GetNodeLaborCost() {
+		return NodeInformation.LaborCost;
 	}
 
 	// Get Node Position Index
