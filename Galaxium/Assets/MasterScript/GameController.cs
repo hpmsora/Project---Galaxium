@@ -53,11 +53,13 @@ public class GameController : MonoBehaviour {
 
 	// Test Initialization
 	void TestInit() {
+        Debug.Log("Test Initiation");
 		CreateNewNode("Test", 12.3, new Vector2(1, 1));
 		CreateNewNode("Test", 12.3, new Vector2(1, 2));
 		CreateNewNode("Test", 12.3, new Vector2(1, 3));
 		CreateNewNode("Test", 12.3, new Vector2(2, 1));
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
+        Debug.Log(Button_ChangeModeTemp.name);
 	}
 
 	// Updating by frame
