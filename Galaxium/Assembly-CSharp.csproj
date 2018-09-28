@@ -67,6 +67,7 @@
     <Compile Include="Assets\MasterScript\GameController.cs" />
     <Compile Include="Assets\MasterScript\NodeController.cs" />
     <Compile Include="Assets\Renderers\GameUtilityRenderer.cs" />
+    <Compile Include="Assets\Renderers\NodeConnectionRenderer.cs" />
     <Compile Include="Assets\Renderers\NodeRenderer.cs" />
     <Compile Include="Assets\Renderers\NodeSettingWindowRenderer.cs" />
     <Compile Include="Assets\Renderers\NodeSpaceRenderer.cs" />
