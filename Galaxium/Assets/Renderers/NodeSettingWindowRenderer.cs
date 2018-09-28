@@ -42,10 +42,14 @@ public class NodeSettingWindowRenderer : MonoBehaviour {
 
 	// Run Button Apply Function
 	void Button_Apply_Function() {
+		Node.GetComponent<NodeRenderer> ().SetNodeName(InputField_NodeName.text);
+		Node.GetComponent<NodeRenderer> ().SetNodeLaborCost(double.Parse (InputField_NodeLaborCost.text));
 	}
 
 	// Run Button Confirm Function 
 	void Button_Confirm_Function() {
-		
+		Node.GetComponent<NodeRenderer> ().SetNodeName(InputField_NodeName.text);
+		Node.GetComponent<NodeRenderer> ().SetNodeLaborCost(double.Parse (InputField_NodeLaborCost.text));
+		Destroy (gameObject);
 	}
 }

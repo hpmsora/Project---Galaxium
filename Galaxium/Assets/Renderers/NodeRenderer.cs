@@ -48,8 +48,19 @@ public class NodeRenderer : MonoBehaviour {
 		return NodeInformation.Name;
 	}
 
+	// Set Node Name
+	public void SetNodeName(string _NodeName) {
+		NodeInformation.Name = _NodeName;
+	}
+
+	// Get Node Labor Cost
 	public double GetNodeLaborCost() {
 		return NodeInformation.LaborCost;
+	}
+
+	// Set Node Labor Cost
+	public void SetNodeLaborCost(double _NodeLaborCost) {
+		NodeInformation.LaborCost = _NodeLaborCost;
 	}
 
 	// Get Node Position Index
