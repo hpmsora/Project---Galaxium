@@ -4,37 +4,34 @@ using UnityEngine;
 
 public class NodeConnectionRenderer : MonoBehaviour {
 
-    public Material LineMat;
+    // Node Connection Information
+    private Color Color_LineColor;
+    private GameObject GameObject_ParentNode;
+    private GameObject GameObject_ChildNode;
+    private LineRenderer NewLineRenderer;
 
-    public GameObject GameObject_ParentNode;
-    public GameObject GameObject_ChildNode;
-	
+	// Initialization
+    void Start() {
+        NewLineRenderer = transform.GetComponent<LineRenderer>();
+		NewLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+		NewLineRenderer.widthMultiplier = GameConstants.NodeConnection_Width;
+    }
+
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    void DrawNodeConnection() {
-        Vector3 Parent_Position = GameObject_ParentNode.transform.position;
-        Vector3 Child_Position = GameObject_ChildNode.transform.position;
-
-        GL.Begin(GL.LINES);
-
-        LineMat.SetPass(0);
-
-        GL.Color(new Color(LineMat.color.g, LineMat.color.g, LineMat.color.b, LineMat.color.a));
-        GL.Vertex(Parent_Position);
-        GL.Vertex(Child_Position);
-        GL.End();
+        NewLineRenderer.SetPosition(0, GameObject_ParentNode.transform.position);
+        NewLineRenderer.SetPosition(1, GameObject_ChildNode.transform.position);
+        NewLineRenderer.SetColors(Color_LineColor, Color_LineColor);
     }
 
-    void OnRenderObject()
-    {
-        DrawNodeConnection();
+    // Set parent and child node
+    public void SetParentAndChild(GameObject _ParentNode, GameObject _ChildNode) {
+        GameObject_ParentNode = _ParentNode;
+        GameObject_ChildNode = _ChildNode;
     }
 
-    void OnDrawGizmos()
-    {
-        DrawNodeConnection();
+    // Set color of connection line
+    public void SetColor(Color _Color) {
+        Color_LineColor = _Color;
     }
 }

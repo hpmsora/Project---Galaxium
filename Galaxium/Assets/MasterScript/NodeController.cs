@@ -50,24 +50,6 @@ public class NodeController : MonoBehaviour {
 		}
 	}
 
-	// Generate node connection
-	public void CreateNodeConnection(GameObject _Node_1, GameObject _Node_2, GameObject _NodeConnection, Color _Color) {
-		Vector3 Node_1_Position = _Node_1.transform.position;
-		Vector3 Node_2_Position = _Node_2.transform.position;
-		Node_1_Position.z = 90;
-		Node_2_Position.z = 90;
-
-		NewNodeConnection = Instantiate(_NodeConnection, Node_1_Position, Quaternion.identity, GameObject.Find("NodeConnectionGroup").transform);
-		NewNodeConnection.name = "Test";
-		LineRenderer NewLineRenderer = NewNodeConnection.GetComponent<LineRenderer>();
-		NewLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-		NewLineRenderer.material.color = Color.red;
-		NewLineRenderer.SetColors(_Color, _Color);
-		NewLineRenderer.widthMultiplier = GameConstants.NodeConnection_Width;
-		NewLineRenderer.SetPosition(0, Node_1_Position);
-		NewLineRenderer.SetPosition(1, Node_2_Position);
-	}
-
 	// Getting all node gameobjects
 	GameObject[] GetAllNodeGameObjects() {
 		return GameObject.FindGameObjectsWithTag ("Node");
@@ -76,5 +58,30 @@ public class NodeController : MonoBehaviour {
 	// Getting all node utility gameobjects
 	GameObject[] GetAllNodeUtilityGameObjects() {
 		return GameObject.FindGameObjectsWithTag ("NodeUtility");
+	}
+
+	//-----------------------------------------------------------------------
+	// NODE CONNECTION CONTROLLER
+	// Generate node connection
+	public void CreateNodeConnection(GameObject _Node_Parent, GameObject _Node_Child, GameObject _NodeConnection, Color _Color) {
+		Vector3 Node_Parent_Position = _Node_Parent.transform.position;
+		Vector3 Node_Child_Position = _Node_Child.transform.position;
+		string Parent_Name = _Node_Parent.name;
+		string Child_Name = _Node_Child.name;
+		Node_Parent_Position.z = 90;
+		Node_Child_Position.z = 90;
+
+		NewNodeConnection = Instantiate(_NodeConnection, Node_Parent_Position, Quaternion.identity, GameObject.Find("NodeConnectionGroup").transform);
+		NewNodeConnection.name = Parent_Name + " <> " + Child_Name;
+		NewNodeConnection.GetComponent<NodeConnectionRenderer>().SetParentAndChild(_Node_Parent, _Node_Child);
+		NewNodeConnection.GetComponent<NodeConnectionRenderer>().SetColor(_Color);
+	}
+
+	public void GetActiveNodeConnection(string _NodeName) {
+		GameObject[] AllNodeConnections = GetAllNodeConnections();
+	}
+
+	GameObject[] GetAllNodeConnections() {
+		return GameObject.FindGameObjectsWithTag("NodeConnection");
 	}
 }
