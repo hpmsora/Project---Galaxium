@@ -15,10 +15,9 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 	private GameObject NewNode;
 	private GameObject NewNodeUtilityGroup;
 
-	public void OnBeginDrag(PointerEventData _EventData){
-		Original_Position = GameObject_NodeUtilityGroup.transform.position;
-
+	public void OnBeginDrag(PointerEventData _EventData) {
 		NewNodeUtilityGroup = Instantiate (GameObject_NodeUtilityGroup, transform.position, Quaternion.identity, GameObject.Find ("NodeGroup").transform) as GameObject;
+		Original_Position = NewNodeUtilityGroup.transform.TransformPoint(0, 0, 0);
 		NewNodeUtilityGroup.name = "New Node Utility Group";
 		ClearNode ();
 		CreateNewNode ();
@@ -30,7 +29,7 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 
 	public void OnDrag(PointerEventData _EventData) {
 		if (NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetIsDraggable ()) {
-			NewNodeUtilityGroup.transform.position = Input.mousePosition;
+			NewNodeUtilityGroup.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Original_Position.z));
 		} else {
 			NewNodeUtilityGroup.transform.localPosition = new Vector3(0, 0, 0);
 		}

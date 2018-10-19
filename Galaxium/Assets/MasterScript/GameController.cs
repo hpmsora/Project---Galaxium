@@ -16,6 +16,10 @@ public class GameController : MonoBehaviour {
 	// Prefab GameObjects
 	public GameObject GameObject_Node;
 	public GameObject GameObject_NodeUtilityGroup;
+	public GameObject GameObject_NodeConnection;
+
+	// Additional Objects
+	public Material Material_NodeConnection;
 
 	// GameController Information
 	private string GameMode = GameConstants.Mode_Game;
@@ -54,27 +58,37 @@ public class GameController : MonoBehaviour {
 	// Test Initialization
 	void TestInit() {
         Debug.Log("Test Initiation");
-		CreateNewNode("Test", 12.3, new Vector2(1, 1));
-		CreateNewNode("Test", 12.3, new Vector2(1, 2));
-		CreateNewNode("Test", 12.3, new Vector2(1, 3));
-		CreateNewNode("Test", 12.3, new Vector2(2, 1));
+		GameObject TestNode_1 = NewNodeController.CreateNewNode(GameObject_Node, "Test 0 0", 12.3, new Vector2(0, 0));
+		GameObject TestNode_2 = NewNodeController.CreateNewNode(GameObject_Node, "Test 1 0", 12.3, new Vector2(1, 0));
+		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_2);
+		GameObject TestNode_3 = NewNodeController.CreateNewNode(GameObject_Node, "Test 0 1", 12.3, new Vector2(0, 1));
+		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_3);
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
         Debug.Log(Button_ChangeModeTemp.name);
+	}
+
+	// Testing
+	void TestPrint() {
+		Debug.Log("Child List Start");
+		GameObject Test = GameObject.Find("Test 0 0");
+		PrintAllChildren(Test);
+		Debug.Log("Child List Finish");
+	}
+
+	void PrintAllChildren(GameObject _Node) {
+		Debug.Log(_Node.name);
+		if (_Node.GetComponent<NodeRenderer>().GetNodeChildrenList().Count != 0) {
+			foreach(GameObject EachNode in _Node.GetComponent<NodeRenderer>().GetNodeChildrenList()) {
+				PrintAllChildren(EachNode);
+				NewNodeController.CreateNodeConnection(_Node, EachNode, GameObject_NodeConnection, Color.red);
+			}
+		}
 	}
 
 	// Updating by frame
 	void Update () {
 		Text_TestedScore.text = Profile.TestedScore.ToString ();
 		Text_ExpectedScore.text = Profile.ExpectedScore.ToString ();
-	}
-
-	// Create New Node
-	GameObject CreateNewNode(string _NodeName, double _Cost, Vector3 _RelativeLocation) {
-		NewNode = Instantiate (GameObject_Node, new Vector3 (0, 0, 0), Quaternion.identity, GameObject_NodeGroup.transform) as GameObject;
-		NewNode.GetComponent<NodeRenderer> ().UpdateInformation (_NodeName, _Cost, _RelativeLocation);
-		NewNode.name = _NodeName;
-
-		return NewNode;
 	}
 
 	// Changing game mode
@@ -95,6 +109,8 @@ public class GameController : MonoBehaviour {
 			GameMode = GameConstants.Mode_Game;
 			NewNodeController.DestoryNodeUtilityGroup (GameObject_NodeGroup);
 		}
+
+		TestPrint();
 
 		Debug.Log ("Current Mode: " + GameMode);
 	}
