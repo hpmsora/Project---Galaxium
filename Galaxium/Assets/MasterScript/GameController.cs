@@ -8,9 +8,8 @@ public class GameController : MonoBehaviour {
 	static GameController instance;
 
 	// Mainscene GameObjects
-	public Text Text_TestedScore;
-	public Text Text_ExpectedScore;
 	public Button Button_ChangeModeTemp;
+	public GameObject GameObject_GameUtility;
 	public GameObject GameObject_NodeGroup;
 
 	// Prefab GameObjects
@@ -87,8 +86,7 @@ public class GameController : MonoBehaviour {
 
 	// Updating by frame
 	void Update () {
-		Text_TestedScore.text = Profile.TestedScore.ToString ();
-		Text_ExpectedScore.text = Profile.ExpectedScore.ToString ();
+		GameObject_GameUtility.GetComponent<GameUtilityRenderer>().UpdateScores(Profile.TestedScore, Profile.ExpectedScore);
 	}
 
 	// Changing game mode
