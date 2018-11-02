@@ -104,13 +104,13 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 	// Get All Possible Position
 	// Vector3 <X, Y, 0 or 1 (0 = Empty, 1 = Occupied)>
 	public List<Vector3> GetAllPossiblePosition() {
-		Vector2 NodePositionIndex = NewNode.GetComponent<NodeRenderer>().GetPositionIndex();
+		Vector2 NodePositionIndex = NewNode.GetComponent<NodeRenderer>().GetNodePositionIndex();
 		GameObject[] AllNodes = GameObject.FindGameObjectsWithTag ("Node");
 		List<Vector2> OccupiedNodePositionIndexs = new List<Vector2> ();
 		List<Vector3> AllPossibleNodePositionIndexs = new List<Vector3> ();
 
 		foreach (GameObject EachAllNode in AllNodes) {
-			OccupiedNodePositionIndexs.Add (EachAllNode.GetComponent<NodeRenderer> ().GetPositionIndex ());
+			OccupiedNodePositionIndexs.Add (EachAllNode.GetComponent<NodeRenderer> ().GetNodePositionIndex ());
 		}
 
 		Vector2 PossibleNodePositionIndex_Limit_Lower = NodePositionIndex - new Vector2 (GameConstants.Node_ExpensionLevel, GameConstants.Node_ExpensionLevel);

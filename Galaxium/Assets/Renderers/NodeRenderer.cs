@@ -64,8 +64,23 @@ public class NodeRenderer : MonoBehaviour {
 	}
 
 	// Get Node Position Index
-	public Vector2 GetPositionIndex() {
+	public Vector2 GetNodePositionIndex() {
 		return NodeInformation.Position;
+	}
+
+	// Get Node Children List
+	public List<GameObject> GetNodeChildrenList() {
+		return NodeInformation.ChildrenList;
+	}
+
+	// Set Node Children List
+	public void SetNodeChildrenList(List<GameObject> _NodeChildrenList) {
+		NodeInformation.ChildrenList = _NodeChildrenList;
+	}
+
+	// Add Node Child
+	public void AddNodeChild(GameObject _NodeChild) {
+		NodeInformation.ChildrenList.Add(_NodeChild);
 	}
 
 	// Update Node local position to 0, 0 temporarly

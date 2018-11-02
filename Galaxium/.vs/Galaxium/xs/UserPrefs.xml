@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{8B2C5336-127D-76FF-9397-DB96C30F0B4C}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MasterScript/GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Renderers/NodeRenderer.cs">
     <Files>
       <File FileName="Assets/Renderers/NodeUtilityGroup_Button_Create.cs" Line="79" Column="2" />
       <File FileName="Assets/Renderers/NodeUtilityGroup_Button_Move.cs" Line="4" Column="1" />
       <File FileName="Assets/Renderers/NodeUtilityGroup_Button_Destroy.cs" Line="12" Column="1" />
       <File FileName="Assets/Renderers/NodeUtilityGroup_Button_Setting.cs" Line="14" Column="1" />
       <File FileName="Assets/Renderers/NodeUtilityGroupRenderer.cs" Line="29" Column="1" />
-      <File FileName="Assets/Renderers/GameUtilityRenderer.cs" Line="23" Column="30" />
+      <File FileName="Assets/Renderers/GameUtilityRenderer.cs" Line="13" Column="1" />
       <File FileName="Assets/MasterScript/GameController.cs" Line="49" Column="26" />
+      <File FileName="Assets/Renderers/NodeConnectionRenderer.cs" Line="37" Column="6" />
+      <File FileName="Assets/Renderers/NodeRenderer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

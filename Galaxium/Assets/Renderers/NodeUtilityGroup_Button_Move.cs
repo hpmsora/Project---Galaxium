@@ -22,7 +22,7 @@ public class NodeUtilityGroup_Button_Move : MonoBehaviour, IBeginDragHandler, ID
 
 	public void OnDrag(PointerEventData _EventData) {
 		if (GameObject_NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetIsDraggable ()) {
-			GameObject_NodeUtilityGroup.transform.position = Input.mousePosition;
+			GameObject_NodeUtilityGroup.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Original_Position.z));
 		} else {
 			GameObject_NodeUtilityGroup.transform.localPosition = new Vector3(0, 0, 0);
 		}

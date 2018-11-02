@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class NodeInfo {
 
@@ -7,6 +9,7 @@ public class NodeInfo {
 		Name = _Name;
 		LaborCost = _LaborCost;
 		Position = _Position;
+		ChildrenList = new List<GameObject>();
 	}
 
 	// Name (String)
@@ -17,4 +20,7 @@ public class NodeInfo {
 
 	// Position (Vector2)
 	public Vector2 Position { get; set; }
+
+	// Children List (List<GameObject>)
+	public List<GameObject> ChildrenList { get; set; }
 }
