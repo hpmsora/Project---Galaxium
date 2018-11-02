@@ -11,6 +11,10 @@ public class ProfileInfo {
 	// tested score + not-tested score
 	public float ExpectedScore { get; set; }
 
+	// Resource list
+	// all resource information contains
+	public List<ResourceInfo> ResourceList{ get; set; }
+
 	// Node list (list of NodeInfo)
 	// all node information contains
 	public List<NodeInfo> NodeList { get; set; }

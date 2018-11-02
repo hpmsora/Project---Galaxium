@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 
 	// Mainscene GameObjects
 	public Button Button_ChangeModeTemp;
+	public Button Button_ResourceSetting;
 	public GameObject GameObject_GameUtility;
 	public GameObject GameObject_NodeGroup;
 
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public GameObject GameObject_Node;
 	public GameObject GameObject_NodeUtilityGroup;
 	public GameObject GameObject_NodeConnection;
+	public GameObject GameObject_NodeSettingWindow;
 
 	// Additional Objects
 	public Material Material_NodeConnection;
@@ -51,7 +53,6 @@ public class GameController : MonoBehaviour {
 	// Initializing State
 	void InitializeState() {
 		NewNodeController = gameObject.GetComponent<NodeController> ();
-
 	}
 
 	// Test Initialization
@@ -63,6 +64,7 @@ public class GameController : MonoBehaviour {
 		GameObject TestNode_3 = NewNodeController.CreateNewNode(GameObject_Node, "Test 0 1", 12.3, new Vector2(0, 1));
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_3);
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
+		Button_ResourceSetting.onClick.AddListener(ResourceSettingButton);
         Debug.Log(Button_ChangeModeTemp.name);
 	}
 
@@ -111,5 +113,10 @@ public class GameController : MonoBehaviour {
 		TestPrint();
 
 		Debug.Log ("Current Mode: " + GameMode);
+	}
+
+	// Resource setting window
+	void ResourceSettingButton() {
+		Instantiate(GameObject_NodeSettingWindow, new Vector3 (0, 0, 0), Quaternion.identity, GameObject.Find("Canvas_Master").transform);
 	}
 }
