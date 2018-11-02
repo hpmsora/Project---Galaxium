@@ -11,13 +11,18 @@ public class ResourceCellRenderer : MonoBehaviour {
 	public InputField InputField_Value;
 	public Button Button_Remove;
 
-	// Use this for initialization
+	// Initialization
 	void Start () {
-		
+		Button_Remove.onClick.AddListener(RemoveButton);
 	}
 	
-	// Update is called once per frame
+	// Update Each Frame
 	void Update () {
 		
+	}
+
+	// Run Remove Button
+	void RemoveButton() {
+		Destroy(gameObject);
 	}
 }

@@ -382,10 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee08728c9ecdb4ce6bab5ffa5fb9e42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Toggle_Active: {fileID: 0}
-  InputField_Name: {fileID: 0}
-  InputField_Value: {fileID: 0}
-  Button_Remove: {fileID: 0}
+  Toggle_Active: {fileID: 114154904330640960}
+  InputField_Name: {fileID: 114357676912788448}
+  InputField_Value: {fileID: 114905033234411904}
+  Button_Remove: {fileID: 114742070268714090}
 --- !u!114 &114242131214990486
 MonoBehaviour:
   m_ObjectHideFlags: 1

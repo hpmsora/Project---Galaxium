@@ -9,7 +9,7 @@ public class GameUtilityRenderer : MonoBehaviour {
 	public Text Text_TestedScore;
 	public Text Text_ExpectedScore;
 	public GameObject GameObject_ResourceBoard;
-	public GameObject  GameObject_ScoreBorad;
+	public GameObject GameObject_ScoreBorad;
 	
 	//Game Utility Renderer Information
 	private float TestedScore;
