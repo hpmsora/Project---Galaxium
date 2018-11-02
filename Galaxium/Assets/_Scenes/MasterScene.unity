@@ -687,6 +687,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb897a72bfa946bdb490acee2805418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Text_TestedScore: {fileID: 1915420727}
+  Text_ExpectedScore: {fileID: 695725680}
+  GameObject_ResourceBoard: {fileID: 2045575098}
+  ScoreBorad: {fileID: 537869962}
 --- !u!1 &1448651284
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,9 +890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd397744478944b43a85bfe36ee92fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text_TestedScore: {fileID: 1915420727}
-  Text_ExpectedScore: {fileID: 695725680}
   Button_ChangeModeTemp: {fileID: 1820136961}
+  GameObject_GameUtility: {fileID: 1299291805}
   GameObject_NodeGroup: {fileID: 841230654}
   GameObject_Node: {fileID: 1749379011736164, guid: 3a2af7010d61c4ebd8c27745561ff100,
     type: 2}
