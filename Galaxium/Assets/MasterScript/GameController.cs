@@ -64,12 +64,11 @@ public class GameController : MonoBehaviour {
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_2);
 		GameObject TestNode_3 = NewNodeController.CreateNewNode(GameObject_Node, "Test 0 1", 12.3, new Vector2(0, 1));
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_3);
-		Profile.ResourceList.Add(new ResourceInfo("Test", 1.1));
+		Profile.ResourceList.Add(new ResourceInfo("Test 1", 1.1));
+		Profile.ResourceList.Add(new ResourceInfo("Test 2", 1.8));
 
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
 		Button_ResourceSetting.onClick.AddListener (ResourceSettingButton);
-
-        Debug.Log(Button_ChangeModeTemp.name);
 	}
 
 	// Testing
@@ -123,5 +122,7 @@ public class GameController : MonoBehaviour {
 	void ResourceSettingButton() {
 		GameObject Setting = Instantiate(GameObject_NodeSettingWindow, new Vector3 (0, 0, 0), Quaternion.identity, GameObject.Find("GameUtility").transform);
 		Setting.transform.localPosition = new Vector3(0, 0, -10);
+		Debug.Log(Profile.ResourceList[0].Name);
+		Setting.GetComponent<ResourceSettingWindowRenderer>().ShowResourceList(Profile.ResourceList);
 	}
 }

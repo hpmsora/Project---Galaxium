@@ -16,6 +16,7 @@ public class ResourceSettingWindowRenderer : MonoBehaviour {
 	public GameObject GameObject_ResourceCell;
 
 	// ResourceSettingWindowRenderer Information
+	private GameObject NewResourceCell;
 	
 
 	// Use this for initialization
@@ -32,14 +33,15 @@ public class ResourceSettingWindowRenderer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	// Initiating Resource List
-	void ShowResourceList(List<ResourceInfo> _ResourceInfoList) {
+	public void ShowResourceList(List<ResourceInfo> _ResourceInfoList) {
 		RemoveAllResourceListGameObject();
+		Debug.Log("Showing!");
 		foreach (ResourceInfo EachResourceInfo in _ResourceInfoList) {
-			Instantiate(GameObject_ResourceCell, new Vector3(0 ,0, 0), Quaternion.identity, GameObject_ResourcesList.transform);
+			NewResourceCell = Instantiate(GameObject_ResourceCell, new Vector3(0 ,0, 0), Quaternion.identity, GameObject_ResourcesList.transform);
+			NewResourceCell.transform.localPosition = new Vector3(0, 0, 0);
 		}
 	}
 

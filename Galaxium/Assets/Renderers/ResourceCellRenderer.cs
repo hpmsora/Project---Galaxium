@@ -18,7 +18,6 @@ public class ResourceCellRenderer : MonoBehaviour {
 	
 	// Update Each Frame
 	void Update () {
-		
 	}
 
 	// Run Remove Button
