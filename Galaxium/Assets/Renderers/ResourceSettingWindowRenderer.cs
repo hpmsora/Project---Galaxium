@@ -16,7 +16,7 @@ public class ResourceSettingWindowRenderer : MonoBehaviour {
 	public GameObject GameObject_ResourceCell;
 
 	// ResourceSettingWindowRenderer Information
-	private GameObject NewResourceCell;
+	private GameObject[] NewResourceCells;
 	
 
 	// Use this for initialization
@@ -36,12 +36,13 @@ public class ResourceSettingWindowRenderer : MonoBehaviour {
 	}
 
 	// Initiating Resource List
-	public void ShowResourceList(List<ResourceInfo> _ResourceInfoList) {
+	public void ShowResourceList(ResourceInfo[] _ResourceInfoList) {
 		RemoveAllResourceListGameObject();
-		Debug.Log("Showing!");
-		foreach (ResourceInfo EachResourceInfo in _ResourceInfoList) {
-			NewResourceCell = Instantiate(GameObject_ResourceCell, new Vector3(0 ,0, 0), Quaternion.identity, GameObject_ResourcesList.transform);
-			NewResourceCell.transform.localPosition = new Vector3(0, 0, 0);
+		NewResourceCells = new GameObject[_ResourceInfoList.Length];
+		for (int i = 0; i < _ResourceInfoList.Length; i++) {
+			NewResourceCells[i] = Instantiate(GameObject_ResourceCell, new Vector3(0 ,0, 0), Quaternion.identity, GameObject_ResourcesList.transform);
+			NewResourceCells[i].transform.localPosition = new Vector3(0, 0, 0);
+			NewResourceCells[i].GetComponent<ResourceCellRenderer>().ShowResource(_ResourceInfoList[i]);
 		}
 	}
 
@@ -59,10 +60,20 @@ public class ResourceSettingWindowRenderer : MonoBehaviour {
 	
 	// Run Button Apply Function
 	void Button_Apply_Function() {
+		GameController NewGameController = GameObject.Find("GameController").GetComponent<GameController>();
+		ResourceInfo[] NewResourceInfoList = new ResourceInfo[NewResourceCells.Length];
+		
+		for (int i = 0; i < NewResourceCells.Length; i++) {
+			ResourceCellRenderer NewResourceCellRenderer =  NewResourceCells[i].GetComponent<ResourceCellRenderer>();
+			NewResourceInfoList[i] = new ResourceInfo(_IsActive:NewResourceCellRenderer.GetIsActive(), _Name: NewResourceCellRenderer.GetName(), _ActualValue: NewResourceCellRenderer.GetValue());
+		}
+
+		NewGameController.SetProfileResources(NewResourceInfoList);
 	}
 
 	// Run Button Confirm Function 
 	void Button_Confirm_Function() {
+		Button_Apply_Function();
 		Destroy (gameObject);
 	}
 }

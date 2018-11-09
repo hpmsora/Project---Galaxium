@@ -1,6 +1,14 @@
 ﻿using System.Collections.Generic;
 
 public class ProfileInfo {
+	// Constructor
+	public ProfileInfo(string _Name, int _Resource_Number) {
+		Name = _Name;
+		TestedScore = 0;
+		ExpectedScore = 0;
+		ResourceList = new ResourceInfo[_Resource_Number];
+		NodeList = new List<NodeInfo>();
+	}
 	// Name (string)
 	public string Name { get; set; }
 
@@ -13,7 +21,7 @@ public class ProfileInfo {
 
 	// Resource list
 	// all resource information contains
-	public List<ResourceInfo> ResourceList{ get; set; }
+	public ResourceInfo[] ResourceList{ get; set; }
 
 	// Node list (list of NodeInfo)
 	// all node information contains

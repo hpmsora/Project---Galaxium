@@ -9,19 +9,34 @@ public class ResourceCellRenderer : MonoBehaviour {
 	public Toggle Toggle_Active;
 	public InputField InputField_Name;
 	public InputField InputField_Value;
-	public Button Button_Remove;
 
 	// Initialization
 	void Start () {
-		Button_Remove.onClick.AddListener(RemoveButton);
 	}
 	
 	// Update Each Frame
 	void Update () {
 	}
 
-	// Run Remove Button
-	void RemoveButton() {
-		Destroy(gameObject);
+	// Get Toggle Value
+	public bool GetIsActive() {
+		return Toggle_Active.isOn;
+	}
+
+	// Get Name Value
+	public string GetName() {
+		return InputField_Name.text;
+	}
+
+	// Get Value
+	public double GetValue() {
+		return double.Parse(InputField_Value.text);
+	}
+
+	// Show Resource Information
+	public void ShowResource(ResourceInfo _ResourceInfo) {
+		Toggle_Active.isOn = _ResourceInfo.IsActive;
+		InputField_Name.text = _ResourceInfo.Name;
+		InputField_Value.text = _ResourceInfo.ActualValue.ToString();
 	}
 }

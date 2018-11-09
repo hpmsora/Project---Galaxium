@@ -10,13 +10,14 @@ public class NodeRenderer : MonoBehaviour {
 	public Text Text_Cost;
 
 	// Rendering Information
-	private NodeInfo NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0));
+	private NodeInfo NodeInformation;
 
 	// Node Utility Tools
 	private NodeUtility NewNodeUtility = new NodeUtility ();
 
 	// Initialize Node
 	void Start () {
+		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0), 0);
 	}
 
 	// Update Node
@@ -90,7 +91,7 @@ public class NodeRenderer : MonoBehaviour {
 
 	// Reset Node
 	public void ResetNode() {
-		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0));
+		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0), 0);
 	}
 
 	// Destory Node

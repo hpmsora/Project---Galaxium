@@ -44,11 +44,10 @@ public class GameController : MonoBehaviour {
 
 	// Initializing Profile
 	void InitializeProfile() {
-		Profile = new ProfileInfo ();
-		Profile.Name = "Player";
-		Profile.TestedScore = 0;
-		Profile.ExpectedScore = 0;
-		Profile.ResourceList = new List<ResourceInfo>();
+		Profile = new ProfileInfo ("New Player", GameConstants.Resource_Number);
+		for (int i = 0; i < GameConstants.Resource_Number; i++) {
+			Profile.ResourceList[i] = new ResourceInfo("New Resource " + (i + 1).ToString(), 0.0);
+		}
 	}
 
 	// Initializing State
@@ -64,8 +63,6 @@ public class GameController : MonoBehaviour {
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_2);
 		GameObject TestNode_3 = NewNodeController.CreateNewNode(GameObject_Node, "Test 0 1", 12.3, new Vector2(0, 1));
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_3);
-		Profile.ResourceList.Add(new ResourceInfo("Test 1", 1.1));
-		Profile.ResourceList.Add(new ResourceInfo("Test 2", 1.8));
 
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
 		Button_ResourceSetting.onClick.AddListener (ResourceSettingButton);
@@ -92,6 +89,22 @@ public class GameController : MonoBehaviour {
 	// Updating by frame
 	void Update () {
 		GameObject_GameUtility.GetComponent<GameUtilityRenderer>().UpdateScores(Profile.TestedScore, Profile.ExpectedScore);
+	}
+
+	// Get Profile Resource Info
+	public ResourceInfo[] GetProfileResources() {
+		return Profile.ResourceList;
+	}
+
+	// Set Profile Resource Info except expected value
+	public void SetProfileResources(ResourceInfo[] _ResourceInfo) {
+		if (Profile.ResourceList.Length == _ResourceInfo.Length) {
+			for (int i = 0; i < Profile.ResourceList.Length; i ++) {
+				Profile.ResourceList[i].IsActive = _ResourceInfo[i].IsActive;
+				Profile.ResourceList[i].Name = _ResourceInfo[i].Name;
+				Profile.ResourceList[i].ActualValue = _ResourceInfo[i].ActualValue;
+			}
+		}
 	}
 
 	// Changing game mode

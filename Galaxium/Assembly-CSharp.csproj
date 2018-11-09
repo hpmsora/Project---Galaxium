@@ -70,7 +70,10 @@
      <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Move.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroup_Button_Setting.cs" />
      <Compile Include="Assets\Renderers\NodeUtilityGroupRenderer.cs" />
+     <Compile Include="Assets\Renderers\ResourceCellNodeRenderer.cs" />
      <Compile Include="Assets\Renderers\ResourceCellRenderer.cs" />
+     <Compile Include="Assets\Renderers\ResourceCellShowRenderer.cs" />
+     <Compile Include="Assets\Renderers\ResourcesBoardRenderer.cs" />
      <Compile Include="Assets\Renderers\ResourceSettingWindowRenderer.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/Users/marshmallow/Desktop/Project---Galaxium/Galaxium/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
