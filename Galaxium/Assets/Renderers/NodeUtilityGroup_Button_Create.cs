@@ -9,13 +9,21 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 	// Main GameObjects
 	public GameObject GameObject_NewNode;
 	public GameObject GameObject_NodeUtilityGroup;
+	public GameObject GameObject_NodeConnection;
 
 	// NodeUtilityGroup_Button_Move Information
 	private Vector3 Original_Position;
+	private GameObject OriginalNode;
 	private GameObject NewNode;
 	private GameObject NewNodeUtilityGroup;
+	private GameObject NewNodeConnection;
 
+	public void SetOriginalNode(GameObject _OriginalNode) {
+		OriginalNode = _OriginalNode;
+	}
 	public void OnBeginDrag(PointerEventData _EventData) {
+		NodeController NewNodeController = GameObject.Find("GameController").GetComponent<NodeController>();
+		
 		NewNodeUtilityGroup = Instantiate (GameObject_NodeUtilityGroup, transform.position, Quaternion.identity, GameObject.Find ("NodeGroup").transform) as GameObject;
 		Original_Position = NewNodeUtilityGroup.transform.TransformPoint(0, 0, 0);
 		NewNodeUtilityGroup.name = "New Node Utility Group";
@@ -24,6 +32,7 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetNewNode (NewNode);
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsDraggable (true);
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsNewPosition (false);
+		NewNodeConnection = NewNodeController.CreateNodeConnection(OriginalNode, NewNode, GameObject_NodeConnection, Color.red);
 		GeneratePossiblePositions ();
 	}
 
@@ -38,6 +47,7 @@ public class NodeUtilityGroup_Button_Create : MonoBehaviour, IBeginDragHandler, 
 	public void OnEndDrag(PointerEventData _EventData) {
 		if (!NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetIsNewPosition ()) {
 			Destroy (NewNodeUtilityGroup);
+			Destroy (NewNodeConnection);
 		}
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsDraggable (false);
 		NewNodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().SetIsNewPosition (false);
