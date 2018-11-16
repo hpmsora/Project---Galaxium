@@ -10,7 +10,7 @@ public class NodeRenderer : MonoBehaviour {
 	public Text Text_Cost;
 
 	// Rendering Information
-	private NodeInfo NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0));
+	private NodeInfo NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0), GameConstants.Resource_Number);
 
 	// Node Utility Tools
 	private NodeUtility NewNodeUtility = new NodeUtility ();
@@ -78,6 +78,11 @@ public class NodeRenderer : MonoBehaviour {
 		NodeInformation.ChildrenList = _NodeChildrenList;
 	}
 
+	// Get Node Resource List
+	public double[] GetNodeResourceList() {
+		return NodeInformation.ResourceList;
+	}
+
 	// Add Node Child
 	public void AddNodeChild(GameObject _NodeChild) {
 		NodeInformation.ChildrenList.Add(_NodeChild);
@@ -90,7 +95,7 @@ public class NodeRenderer : MonoBehaviour {
 
 	// Reset Node
 	public void ResetNode() {
-		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0));
+		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0), 0);
 	}
 
 	// Destory Node

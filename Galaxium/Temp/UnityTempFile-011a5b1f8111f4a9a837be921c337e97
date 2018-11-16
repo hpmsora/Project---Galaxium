@@ -187,6 +187,7 @@
 -define:UNITY_TEAM_LICENSE
 'Assets/DataInfo/NodeInfo.cs'
 'Assets/DataInfo/ProfileInfo.cs'
+'Assets/DataInfo/ResourceInfo.cs'
 'Assets/MasterScript/GameConstants.cs'
 'Assets/MasterScript/GameController.cs'
 'Assets/MasterScript/NodeController.cs'
@@ -201,4 +202,9 @@
 'Assets/Renderers/NodeUtilityGroup_Button_Move.cs'
 'Assets/Renderers/NodeUtilityGroup_Button_Setting.cs'
 'Assets/Renderers/NodeUtilityGroupRenderer.cs'
+'Assets/Renderers/ResourceCellNodeRenderer.cs'
+'Assets/Renderers/ResourceCellRenderer.cs'
+'Assets/Renderers/ResourceCellShowRenderer.cs'
+'Assets/Renderers/ResourcesBoardRenderer.cs'
+'Assets/Renderers/ResourceSettingWindowRenderer.cs'
 -lib:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity'

@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 	static GameController instance;
 
 	// Mainscene GameObjects
+	public Button Button_ResourceSetting;
 	public Button Button_ChangeModeTemp;
 	public GameObject GameObject_GameUtility;
 	public GameObject GameObject_NodeGroup;
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public GameObject GameObject_Node;
 	public GameObject GameObject_NodeUtilityGroup;
 	public GameObject GameObject_NodeConnection;
+	public GameObject GameObject_NodeSettingWindow;
 
 	// Additional Objects
 	public Material Material_NodeConnection;
@@ -42,16 +44,15 @@ public class GameController : MonoBehaviour {
 
 	// Initializing Profile
 	void InitializeProfile() {
-		Profile = new ProfileInfo ();
-		Profile.Name = "Player";
-		Profile.TestedScore = 0;
-		Profile.ExpectedScore = 0;
+		Profile = new ProfileInfo ("New Player", GameConstants.Resource_Number);
+		for (int i = 0; i < GameConstants.Resource_Number; i++) {
+			Profile.ResourceList[i] = new ResourceInfo("New Resource " + (i + 1).ToString(), 0.0, i);
+		}
 	}
 
 	// Initializing State
 	void InitializeState() {
 		NewNodeController = gameObject.GetComponent<NodeController> ();
-
 	}
 
 	// Test Initialization
@@ -62,8 +63,9 @@ public class GameController : MonoBehaviour {
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_2);
 		GameObject TestNode_3 = NewNodeController.CreateNewNode(GameObject_Node, "Test 0 1", 12.3, new Vector2(0, 1));
 		TestNode_1.GetComponent<NodeRenderer>().AddNodeChild(TestNode_3);
+
 		Button_ChangeModeTemp.onClick.AddListener (ChangeModeButton);
-        Debug.Log(Button_ChangeModeTemp.name);
+		Button_ResourceSetting.onClick.AddListener (ResourceSettingButton);
 	}
 
 	// Testing
@@ -89,6 +91,22 @@ public class GameController : MonoBehaviour {
 		GameObject_GameUtility.GetComponent<GameUtilityRenderer>().UpdateScores(Profile.TestedScore, Profile.ExpectedScore);
 	}
 
+	// Get Profile Resource Info
+	public ResourceInfo[] GetProfileResources() {
+		return Profile.ResourceList;
+	}
+
+	// Set Profile Resource Info except expected value
+	public void SetProfileResources(ResourceInfo[] _ResourceInfo) {
+		if (Profile.ResourceList.Length == _ResourceInfo.Length) {
+			for (int i = 0; i < Profile.ResourceList.Length; i ++) {
+				Profile.ResourceList[i].IsActive = _ResourceInfo[i].IsActive;
+				Profile.ResourceList[i].Name = _ResourceInfo[i].Name;
+				Profile.ResourceList[i].ActualValue = _ResourceInfo[i].ActualValue;
+			}
+		}
+	}
+
 	// Changing game mode
 	void ChangeModeButton() {
 		Debug.Log ("Mode Changing");
@@ -111,5 +129,12 @@ public class GameController : MonoBehaviour {
 		TestPrint();
 
 		Debug.Log ("Current Mode: " + GameMode);
+	}
+
+	// Resource setting window
+	void ResourceSettingButton() {
+		GameObject Setting = Instantiate(GameObject_NodeSettingWindow, new Vector3 (0, 0, 0), Quaternion.identity, GameObject.Find("GameUtility").transform);
+		Setting.transform.localPosition = new Vector3(0, 0, 0);
+		Setting.GetComponent<ResourceSettingWindowRenderer>().ShowResourceList(Profile.ResourceList);
 	}
 }
