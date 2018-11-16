@@ -11,10 +11,13 @@ public class NodeSettingWindowRenderer : MonoBehaviour {
 	public Button Button_Close;
 	public Button Button_Apply;
 	public Button Button_Confirm;
+	public GameObject GameObject_ResourceCellNode;
+	public GameObject GameObject_ResourcesList;
 
 	// NodeSettingWindow Information
 	private GameObject Node;
 	private GameObject NodeUtilityGroup;
+	private GameObject ResourceCellNode;
 
 	// Use this for initialization
 	void Start () {
@@ -30,9 +33,26 @@ public class NodeSettingWindowRenderer : MonoBehaviour {
 	public void UpdateGameUtilityGroup(GameObject _NodeUtilityGroup) {
 		NodeUtilityGroup = _NodeUtilityGroup;
 		Node = NodeUtilityGroup.GetComponent<NodeUtilityGroupRenderer> ().GetNewNode ();
+		GameObject NewGameController = GameObject.Find("GameController");
+		ResourceInfo[] NewResourceInfoList = NewGameController.GetComponent<GameController>().GetProfileResources();
 
 		InputField_NodeName.text = Node.GetComponent<NodeRenderer> ().GetNodeName ();
 		InputField_NodeLaborCost.text = Node.GetComponent<NodeRenderer> ().GetNodeLaborCost ().ToString ();
+
+		double[] ResourceList = Node.GetComponent<NodeRenderer>().GetNodeResourceList();
+
+		for(int i = 0; i < ResourceList.Length; i++) {
+			ResourceCellNode = Instantiate(GameObject_ResourceCellNode, new Vector3(0, 0, 0), Quaternion.identity, GameObject_ResourcesList.transform);
+			ResourceCellNode.transform.localPosition = new Vector3(0, 0, 0);
+			ResourceInfo NewResourceInfo = new ResourceInfo("Default", 0.0, 0);
+			foreach (ResourceInfo EachNewResourceInfoList in NewResourceInfoList) {
+				if (EachNewResourceInfoList.IdentificationNumber == i) {
+					NewResourceInfo = EachNewResourceInfoList;
+					break;
+				}
+			}
+			ResourceCellNode.GetComponent<ResourceCellNodeRenderer>().ShowResource(NewResourceInfo, ResourceList[i]);
+		}
 	}
 
 	// Run Button Cancel Function
@@ -51,5 +71,12 @@ public class NodeSettingWindowRenderer : MonoBehaviour {
 		Node.GetComponent<NodeRenderer> ().SetNodeName(InputField_NodeName.text);
 		Node.GetComponent<NodeRenderer> ().SetNodeLaborCost(double.Parse (InputField_NodeLaborCost.text));
 		Destroy (gameObject);
+	}
+
+	// Remove All Resource List
+	void RemoveAllResourceListGameObject() {
+		foreach (Transform EachResources in GameObject_ResourcesList.transform) {
+			GameObject.Destroy(EachResources.transform);
+		}
 	}
 }

@@ -568,6 +568,9 @@ MonoBehaviour:
   Button_Close: {fileID: 114711882294082284}
   Button_Apply: {fileID: 114695884331372564}
   Button_Confirm: {fileID: 114703315016200986}
+  GameObject_ResourceCellNode: {fileID: 1046340235651078, guid: ae5e0fdee81a54508a3ac2192c266855,
+    type: 2}
+  GameObject_ResourcesList: {fileID: 1315972491428362}
 --- !u!114 &114355790472732800
 MonoBehaviour:
   m_ObjectHideFlags: 1

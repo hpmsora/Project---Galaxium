@@ -3,11 +3,12 @@
 public class ResourceInfo {
 	
 	// Constructor
-	public ResourceInfo(string _Name, double _ActualValue, bool _IsActive = false, double _ExpectedValue = 0.0) {
+	public ResourceInfo(string _Name, double _ActualValue, int _IdentificationNumber, bool _IsActive = false, double _ExpectedValue = 0.0) {
 		IsActive = _IsActive;
 		Name = _Name;
 		ActualValue = _ActualValue;
 		ExpectedValue = _ExpectedValue;
+		IdentificationNumber = _IdentificationNumber;
 	}
 
 	// Activation (bool)
@@ -21,4 +22,7 @@ public class ResourceInfo {
 
 	// Expected Value (float)
 	public double ExpectedValue { get; set; }
+
+	// Identification Number (int)
+	public int IdentificationNumber { get; set; }
 }

@@ -65,7 +65,7 @@ public class ResourceSettingWindowRenderer : MonoBehaviour {
 		
 		for (int i = 0; i < NewResourceCells.Length; i++) {
 			ResourceCellRenderer NewResourceCellRenderer =  NewResourceCells[i].GetComponent<ResourceCellRenderer>();
-			NewResourceInfoList[i] = new ResourceInfo(_IsActive:NewResourceCellRenderer.GetIsActive(), _Name: NewResourceCellRenderer.GetName(), _ActualValue: NewResourceCellRenderer.GetValue());
+			NewResourceInfoList[i] = new ResourceInfo(_IsActive:NewResourceCellRenderer.GetIsActive(), _Name: NewResourceCellRenderer.GetName(), _ActualValue: NewResourceCellRenderer.GetValue(), _IdentificationNumber: i);
 		}
 
 		NewGameController.SetProfileResources(NewResourceInfoList);

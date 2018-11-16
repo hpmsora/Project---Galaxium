@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class ResourceCellNodeRenderer : MonoBehaviour {
 
-	// Use this for initialization
+	// Resource Cell Renderer GameObjects
+	public Toggle Toggle_Active;
+	public Text Text_Name;
+	public InputField InputField_Value;
+
+	// Initialization
 	void Start () {
-		
 	}
 	
-	// Update is called once per frame
+	// Update Each Frame
 	void Update () {
-		
+	}
+
+	public void ShowResource(ResourceInfo _ResourceInfo, double _value) {
+		Toggle_Active.isOn = _ResourceInfo.IsActive;
+		Text_Name.text = _ResourceInfo.Name;
+		InputField_Value.text = _value.ToString();
 	}
 }

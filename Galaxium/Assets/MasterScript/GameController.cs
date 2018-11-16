@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour {
 	void InitializeProfile() {
 		Profile = new ProfileInfo ("New Player", GameConstants.Resource_Number);
 		for (int i = 0; i < GameConstants.Resource_Number; i++) {
-			Profile.ResourceList[i] = new ResourceInfo("New Resource " + (i + 1).ToString(), 0.0);
+			Profile.ResourceList[i] = new ResourceInfo("New Resource " + (i + 1).ToString(), 0.0, i);
 		}
 	}
 
@@ -134,8 +134,7 @@ public class GameController : MonoBehaviour {
 	// Resource setting window
 	void ResourceSettingButton() {
 		GameObject Setting = Instantiate(GameObject_NodeSettingWindow, new Vector3 (0, 0, 0), Quaternion.identity, GameObject.Find("GameUtility").transform);
-		Setting.transform.localPosition = new Vector3(0, 0, -10);
-		Debug.Log(Profile.ResourceList[0].Name);
+		Setting.transform.localPosition = new Vector3(0, 0, 0);
 		Setting.GetComponent<ResourceSettingWindowRenderer>().ShowResourceList(Profile.ResourceList);
 	}
 }

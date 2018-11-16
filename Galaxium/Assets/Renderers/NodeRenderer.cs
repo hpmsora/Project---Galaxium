@@ -10,14 +10,13 @@ public class NodeRenderer : MonoBehaviour {
 	public Text Text_Cost;
 
 	// Rendering Information
-	private NodeInfo NodeInformation;
+	private NodeInfo NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0), GameConstants.Resource_Number);
 
 	// Node Utility Tools
 	private NodeUtility NewNodeUtility = new NodeUtility ();
 
 	// Initialize Node
 	void Start () {
-		NodeInformation = new NodeInfo ("Node Name", 0.0, new Vector2 (0, 0), 0);
 	}
 
 	// Update Node
@@ -77,6 +76,11 @@ public class NodeRenderer : MonoBehaviour {
 	// Set Node Children List
 	public void SetNodeChildrenList(List<GameObject> _NodeChildrenList) {
 		NodeInformation.ChildrenList = _NodeChildrenList;
+	}
+
+	// Get Node Resource List
+	public double[] GetNodeResourceList() {
+		return NodeInformation.ResourceList;
 	}
 
 	// Add Node Child
