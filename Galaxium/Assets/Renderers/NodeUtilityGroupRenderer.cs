@@ -70,6 +70,7 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 	// Set New Node Variable
 	public void SetNewNode(GameObject _NewNode) {
 		NewNode = _NewNode;
+		Button_Create.GetComponent<NodeUtilityGroup_Button_Create>().SetOriginalNode(NewNode);
 	}
 
 	// Get Create Button Gameobject
@@ -98,7 +99,7 @@ public class NodeUtilityGroupRenderer : MonoBehaviour {
 	public void UpdateInformation(Vector3 _RelativePosition, GameObject _NewNode) {
 		RelativePosition = _RelativePosition;
 		transform.localPosition = RelativePosition;
-		NewNode = _NewNode;
+		SetNewNode(_NewNode);
 	}
 
 	// Get All Possible Position

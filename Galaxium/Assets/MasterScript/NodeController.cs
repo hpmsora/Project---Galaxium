@@ -63,7 +63,7 @@ public class NodeController : MonoBehaviour {
 	//-----------------------------------------------------------------------
 	// NODE CONNECTION CONTROLLER
 	// Generate node connection
-	public void CreateNodeConnection(GameObject _Node_Parent, GameObject _Node_Child, GameObject _NodeConnection, Color _Color) {
+	public GameObject CreateNodeConnection(GameObject _Node_Parent, GameObject _Node_Child, GameObject _NodeConnection, Color _Color) {
 		Vector3 Node_Parent_Position = _Node_Parent.transform.position;
 		Vector3 Node_Child_Position = _Node_Child.transform.position;
 		string Parent_Name = _Node_Parent.name;
@@ -75,12 +75,16 @@ public class NodeController : MonoBehaviour {
 		NewNodeConnection.name = Parent_Name + " <> " + Child_Name;
 		NewNodeConnection.GetComponent<NodeConnectionRenderer>().SetParentAndChild(_Node_Parent, _Node_Child);
 		NewNodeConnection.GetComponent<NodeConnectionRenderer>().SetColor(_Color);
+		
+		return NewNodeConnection;
 	}
 
+	// Getting all active node connection
 	public void GetActiveNodeConnection(string _NodeName) {
 		GameObject[] AllNodeConnections = GetAllNodeConnections();
 	}
 
+	// Getting all node connection
 	GameObject[] GetAllNodeConnections() {
 		return GameObject.FindGameObjectsWithTag("NodeConnection");
 	}
