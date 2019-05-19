@@ -79,10 +79,12 @@ public class NodeController : MonoBehaviour {
 		return NewNodeConnection;
 	}
 
+	// Getting all active node connection
 	public void GetActiveNodeConnection(string _NodeName) {
 		GameObject[] AllNodeConnections = GetAllNodeConnections();
 	}
 
+	// Getting all node connection
 	GameObject[] GetAllNodeConnections() {
 		return GameObject.FindGameObjectsWithTag("NodeConnection");
 	}
